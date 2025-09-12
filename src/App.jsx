@@ -1,11 +1,15 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import './index.css'
+
+import LandingPage from './pages/LandingPage'
+import Login from './pages/Login'
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<h1>Landing page</h1>} />
-        <Route path='/login' element={<h1>Login</h1>} />
+        <Route path='/' element={<LandingPage/>} />
+        <Route path='/login' element={<Login/>} />
         <Route path='/registro' element={<h1>Registro</h1>} />
         <Route path='/noticias' element={<h1>noticias</h1>} />
         <Route path='/jogos' element={<h1>jogos</h1>} />

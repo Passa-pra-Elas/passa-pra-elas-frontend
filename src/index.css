@@ -1,1 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Inter');
 @import "tailwindcss";
+
+@theme {
+    --color-ppurple-500: #5E2172;
+    --color-ppurple-200: #954ca6;
+    --color-ppink-500: #D94C90;
+    --color-ppink-900: #b54a68;
+    --color-pgreen-500: #59B84B;
+    --color-pgrey-500: #EBEBEB;
+}
