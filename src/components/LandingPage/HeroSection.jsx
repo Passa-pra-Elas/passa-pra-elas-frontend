@@ -24,7 +24,7 @@ const HeroSection = () => {
           <img src={background} alt="background" className='w-screen h-screen object-cover'/>
           <div className='absolute inset-0 bg-black opacity-80'></div>
           <div className='absolute inset-0
-          bg-[radial-gradient(ellipse_at_top,_#ffffff4d_1.2px,_transparent_1px)] bg-[size:14  px_14px] 
+          bg-[radial-gradient(ellipse_at_top,_#ffffff4d_1.2px,_transparent_1px)] bg-[size:14px_14px] 
           opacity-30'></div>
         </div>
 

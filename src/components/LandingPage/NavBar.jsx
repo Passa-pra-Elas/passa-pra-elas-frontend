@@ -13,7 +13,7 @@ function NavBar() {
             <div className='flex items-center space-x-6'>
                 <a href='#' className='text-lg font-bold text-pgreen-500 transition-transform hover:underline hover:scale-110'>SOBRE NÓS</a>
                 <Link to='/login' className='text-lg font-bold text-pgreen-500 transition-transform hover:underline hover:scale-110'>LOGIN</Link>
-                <Link to='/registro' className='bg-ppink-500 text-lg font-bold text-white py-1.5 px-4 rounded-full transition-all duration-300 hover:bg-[#b54a68] hover:scale-105'>CADASTRAR-SE</Link>
+                <Link to='/cadastro' className='bg-ppink-500 text-lg font-bold text-white py-1.5 px-4 rounded-full transition-all duration-300 hover:bg-[#b54a68] hover:scale-105'>CADASTRAR-SE</Link>
             </div>
         </nav>
     )
