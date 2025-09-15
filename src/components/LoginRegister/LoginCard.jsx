@@ -7,7 +7,7 @@ import { ArrowTurnUpLeftIcon, CheckCircleIcon } from '@heroicons/react/24/outlin
 
 function LoginCard({ cardArg = 'login-1' }) {
 	const [card, setCard] = useState(cardArg)
-	const navigate = useNavigate();
+	const navigate = useNavigate()
 
 	function CardLogin1() {
 		const [email, setEmail] = useState('')
@@ -26,62 +26,62 @@ function LoginCard({ cardArg = 'login-1' }) {
 
 		return (
 			<div className='bg-black/45 max-w-sm text-white flex flex-col items-center py-4 px-8 rounded-2xl'>
-					{/*Titulo*/}
-					<h2 className='text-ppink-500 text-4xl font-extrabold mb-6 text-shadow-md'>Login</h2>
-		
-					{/*Inputs*/}
-					<div className='space-y-4'>
-							<input type="text" placeholder='Email ou nome de usuário' value={email}
-								onChange={e=>setEmail(e.target.value)}
-								className='bg-white placeholder-ppinktr-500 text-black w-full px-2.5 py-1 rounded-xl 
-								focus:outline-ppink-500'/>
-							<input type="password" placeholder='Senha' value={password}
-								onChange={e=>setPassword(e.target.value)}
-								className='bg-white placeholder-ppinktr-500 text-black w-full px-2.5 py-1 rounded-xl
-								focus:outline-ppink-500'/>
-					</div>
-		
-					{/*Botões adicionais*/}
-					<div className='w-full flex justify-between items-center mt-4'>
-							<label className='flex items-center space-x-2 cursor-pointer'>
-								<input type="checkbox" className='form-checkbox border-none scale-130 cursor-pointer'/>
-								<span className='text-lg'>Lembre de mim</span>
-							</label>
-							<button 
-								onClick={function(){setCard('rs-1')}}
-								className='text-ppink-500 text-sm cursor-pointer
-								transition-all hover:font-medium hover:scale-102'>Esqueceu sua senha?
-							</button>
-					</div>
-		
-					{/*Botão entrar*/}
-					<button
-						onClick={HandleSubmit} 
-						className='w-full bg-ppurple-500 text-3xl font-extrabold mt-4 p-1 rounded-xl cursor-pointer
-						transition-all hover:bg-ppurple-900 hover:text-pgrey-500 hover:scale-102'>
-							ENTRAR
-					</button>
-
-					{/*Texto informátivo*/}
-					<p className='text-ppink-500 w-full text-left text-sm mt-1'>{error}</p>
-
-					{/*Outros meios de login*/}	
-					<div className='w-full flex flex-col items-center mt-6 mb-4 pt-2 border-t-[1.5px] border-white'>
-							<p>Ou entre usando:</p>
-							<div className='flex gap-5 mt-3'>
-								<FontAwesomeIcon icon={faGoogle} className='text-ppink-500 scale-150 cursor-pointer'/>
-								<FontAwesomeIcon icon={faFacebook} className='text-ppink-500 scale-150 cursor-pointer'/>
-							</div>
-					</div>
-		
-					{/*Botão ir para cadastro*/}
-					<div className='text-center mt-5'>
-						<p className='text-sm'>Não tem uma conta?</p>
-						<Link to='/cadastro' 
-						className='text-ppink-500
-						transition-all hover:scale-105 hover:font-bold'>Cadastrar-se</Link>
-					</div>
+				{/*Titulo*/}
+				<h2 className='text-ppink-500 text-4xl font-extrabold mb-6 text-shadow-md'>Login</h2>
+	
+				{/*Inputs*/}
+				<div className='space-y-4'>
+						<input type="text" placeholder='Email ou nome de usuário' value={email}
+							onChange={e=>setEmail(e.target.value)}
+							className='bg-white placeholder-ppinktr-500 text-black w-full px-2.5 py-1 rounded-xl 
+							focus:outline-ppink-500'/>
+						<input type="password" placeholder='Senha' value={password}
+							onChange={e=>setPassword(e.target.value)}
+							className='bg-white placeholder-ppinktr-500 text-black w-full px-2.5 py-1 rounded-xl
+							focus:outline-ppink-500'/>
 				</div>
+	
+				{/*Botões adicionais*/}
+				<div className='w-full flex justify-between items-center mt-4'>
+						<label className='flex items-center space-x-2 cursor-pointer'>
+							<input type="checkbox" className='form-checkbox border-none scale-130 cursor-pointer'/>
+							<span className='text-lg'>Lembre de mim</span>
+						</label>
+						<button 
+							onClick={function(){setCard('rs-1')}}
+							className='text-ppink-500 text-sm cursor-pointer
+							transition-all hover:font-medium hover:scale-102'>Esqueceu sua senha?
+						</button>
+				</div>
+	
+				{/*Botão entrar*/}
+				<button
+					onClick={HandleSubmit} 
+					className='w-full bg-ppurple-500 text-3xl font-extrabold mt-4 p-1 rounded-xl cursor-pointer
+					transition-all hover:bg-ppurple-900 hover:text-pgrey-500 hover:scale-102'>
+						ENTRAR
+				</button>
+
+				{/*Texto informátivo*/}
+				<p className='text-ppink-500 w-full text-left text-sm mt-1'>{error}</p>
+
+				{/*Outros meios de login*/}	
+				<div className='w-full flex flex-col items-center mt-6 mb-4 pt-2 border-t-[1.5px] border-white'>
+						<p>Ou entre usando:</p>
+						<div className='flex gap-5 mt-3'>
+							<FontAwesomeIcon icon={faGoogle} className='text-ppink-500 scale-150 cursor-pointer'/>
+							<FontAwesomeIcon icon={faFacebook} className='text-ppink-500 scale-150 cursor-pointer'/>
+						</div>
+				</div>
+	
+				{/*Botão ir para cadastro*/}
+				<div className='text-center mt-5'>
+					<p className='text-sm'>Não tem uma conta?</p>
+					<Link to='/cadastro' 
+					className='text-ppink-500
+					transition-all hover:scale-105 hover:font-bold'>Cadastrar-se</Link>
+				</div>
+			</div>
 		)
 	}
 
