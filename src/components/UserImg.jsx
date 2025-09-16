@@ -27,8 +27,8 @@ const UserImg = ({ size }) => {
   return (
     <Link to={'/login'}>
       <FontAwesomeIcon icon={ faUser } 
-        style={{ height: `${size}rem`, width: `${size}rem` }} 
-        className={`bg-ppurple-500 px-2 py-1 rounded-full`}/>
+        style={{ height: `${size/1.5}rem`, width: `${size/1.5}rem` }} 
+        className={`bg-white p-2 rounded-full`}/>
     </Link>
   )
 }

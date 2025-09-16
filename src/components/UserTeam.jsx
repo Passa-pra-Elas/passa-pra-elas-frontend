@@ -22,7 +22,7 @@ const UserTeam = ({ size = 3 }) => {
 
    if (user) {
       return (
-         <Link to={'/profile'} className='flex items-center'>
+         <Link to={'/time'} className='flex items-center'>
             <img src={userTeam.photo} alt="team image" 
             style={{ height: `${size}rem`, width: `${size}rem` }} 
             className={`rounded-full`}/>
@@ -31,13 +31,7 @@ const UserTeam = ({ size = 3 }) => {
       )  
    }
 
-   return (
-      <Link to={'/login'}>
-         <FontAwesomeIcon icon={ faUser } 
-         style={{ height: `${size}rem`, width: `${size}rem` }} 
-         className={`bg-ppurple-500 px-2 py-1 rounded-full`}/>
-      </Link>
-   )
+   return
 }
 
 export default UserTeam
