@@ -7,6 +7,8 @@ import LandingPage from './pages/LandingPage'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import News from './pages/News'
+import Matches from './pages/Matches'
+import TestMatch from './pages/TestMatch'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -26,9 +28,10 @@ function App() {
         <Route path='/login' element={<Login/>} />
         <Route path='/cadastro' element={<Register/>} />
         <Route path='/noticias' element={<News/>} />
-        <Route path='/jogos' element={<h1>jogos</h1>} />
-        <Route path='/perfil/:nome' element={<h1>Perfil</h1>} />
-        <Route path='*' element={<h1>Erro 404</h1>}/>
+        <Route path='/jogos' element={<Matches/>} />
+        <Route path='/jogos/teste' element={<TestMatch/>} />
+        {/*<Route path='/perfil/:nome' element={<h1>Perfil</h1>}/>*/}
+        <Route path='*' element={<h1>Erro 404</h1>}/> 
       </Routes>
     </BrowserRouter>
   )

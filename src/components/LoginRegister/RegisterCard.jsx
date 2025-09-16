@@ -113,7 +113,7 @@ function RegisterCard({ cardArg = 'cadastro-1' }) {
                   onChange={e=>setCpf(e.target.value)}
                   className='bg-white placeholder-ppinktr-500 text-black w-full px-2.5 py-1 rounded-xl 
                   focus:outline-ppink-500'/>
-               <input type="password" placeholder='Número de telefone' value={phoneNumber}
+               <input type="text" placeholder='Número de telefone' value={phoneNumber}
                   onChange={e=>setPhoneNumber(e.target.value)}
                   className='bg-white placeholder-ppinktr-500 text-black w-full px-2.5 py-1 rounded-xl
                   focus:outline-ppink-500'/>

@@ -2,12 +2,14 @@
 @import "tailwindcss";
 
 @theme {
+    --color-ppurpletr-500: #5e217270;
     --color-ppurple-900: #3d154d;
     --color-ppurple-500: #5E2172;
     --color-ppurple-200: #954ca6;
     --color-ppinktr-500: #D94C9070;
     --color-ppink-900: #b54a68;
     --color-ppink-500: #D94C90;
+    --color-pgreentr-500: #59B84B70;
     --color-pgreen-500: #59B84B;
     --color-pgrey-500: #EBEBEB;
 }

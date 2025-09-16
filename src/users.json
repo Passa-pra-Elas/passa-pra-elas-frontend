@@ -1,46 +1,96 @@
-  [
-    {
-      "id": 1,
-      "name": "Alice Silva",
-      "email": "alice@example.com",
-      "password": "1234",
-      "userType": "jogadora",
-      "age": 18,
-      "verified": "",
-      "city": "São Paulo",
-      "photo": "https://i.pravatar.cc/300?img=5",
-      "time": "Time Fênix"
-    },
-    {
-      "id": 2,
-      "name": "Bruno Oliveira",
-      "email": "bruno@example.com",
-      "password": "abcd",
-      "userType": "olheiro",
-      "age": 20,
-      "verified": "V",
-      "city": "São Paulo",
-      "photo": "https://i.pravatar.cc/300?img=12"
-    },
-    {
-      "id": 3,
-      "name": "Time Fênix",
-      "email": "fenix@example.com",
-      "password": "time2025",
-      "userType": "time",
-      "verified": "",
-      "city": "São Paulo",
-      "photo": "https://cdn.discordapp.com/attachments/1355170612053672048/1417483749121200269/raw.png?ex=68caa61d&is=68c9549d&hm=94da9f75489671f9e37d030b46b48d2de5718a6112d15bed2e3b99fbbdbaabad&"
-    },
-    {
-      "id": 4,
-      "name": "Carla Souza",
-      "email": "carla@example.com",
-      "password": "report2025",
-      "userType": "jornalista",
-      "age": 30,
-      "verified": "",
-      "city": "São Paulo",
-      "photo": "https://i.pravatar.cc/300?img=20"
-    }
-  ]
+[
+  {
+    "id": 1,
+    "name": "Alice Silva",
+    "email": "alice@example.com",
+    "password": "1234",
+    "userType": "jogadora",
+    "age": 18,
+    "verified": "",
+    "city": "São Paulo",
+    "photo": "https://i.pravatar.cc/300?img=5",
+    "time": "Time Fênix"
+  },
+  {
+    "id": 2,
+    "name": "Bruno Oliveira",
+    "email": "bruno@example.com",
+    "password": "abcd",
+    "userType": "olheiro",
+    "age": 20,
+    "verified": "V",
+    "city": "São Paulo",
+    "photo": "https://i.pravatar.cc/300?img=12"
+  },
+  {
+    "id": 3,
+    "name": "Time Fênix",
+    "email": "fenix@example.com",
+    "password": "time2025",
+    "userType": "time",
+    "verified": "",
+    "city": "São Paulo",
+    "photo": "https://images.seeklogo.com/logo-png/5/1/fc-barcelona-logo-png_seeklogo-52469.png"
+  },
+  {
+    "id": 4,
+    "name": "Carla Souza",
+    "email": "carla@example.com",
+    "password": "report2025",
+    "userType": "jornalista",
+    "age": 30,
+    "verified": "",
+    "city": "São Paulo",
+    "photo": "https://i.pravatar.cc/300?img=20"
+  },
+  {
+    "id": 5,
+    "name": "Time Dragão",
+    "email": "dragao@example.com",
+    "password": "dragao2025",
+    "userType": "time",
+    "verified": "",
+    "city": "Rio de Janeiro",
+    "photo": "https://images.seeklogo.com/logo-png/11/1/real-madrid-club-de-futbol-logo-png_seeklogo-116421.png"
+  },
+  {
+    "id": 6,
+    "name": "Time Tempestade",
+    "email": "tempestade@example.com",
+    "password": "storm2025",
+    "userType": "time",
+    "verified": "",
+    "city": "Curitiba",
+    "photo": "https://images.seeklogo.com/logo-png/5/1/fenerbahce-spor-kulubu-logo-png_seeklogo-53651.png"
+  },
+  {
+    "id": 7,
+    "name": "Time Titãs",
+    "email": "titas@example.com",
+    "password": "titas2025",
+    "userType": "time",
+    "verified": "",
+    "city": "Porto Alegre",
+    "photo": "https://images.seeklogo.com/logo-png/5/1/fenerbahce-spor-kulubu-logo-png_seeklogo-53651.png"
+  },
+  {
+    "id": 8,
+    "name": "Time Lendários",
+    "email": "lendarios@example.com",
+    "password": "legends2025",
+    "userType": "time",
+    "verified": "",
+    "city": "Belo Horizonte",
+    "photo": "https://images.seeklogo.com/logo-png/1/1/besiktas-jk-logo-png_seeklogo-18692.png"
+  },
+  {
+    "id": 9,
+    "name": "Time Falcões",
+    "email": "falcoes@example.com",
+    "password": "falcoes2025",
+    "userType": "time",
+    "verified": "",
+    "city": "Brasília",
+    "photo": "https://images.seeklogo.com/logo-png/7/1/juventus-logo-png_seeklogo-76605.png"
+  }
+]
