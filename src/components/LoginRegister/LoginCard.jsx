@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import users from '../../users.json'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons'
@@ -19,8 +20,14 @@ function LoginCard({ cardArg = 'login-1' }) {
 				setError('Campos não preenchidos!')
 				return
 			}
-
+			const correctUser = users.find((u) => u.email === email && u.password === password)
+			if (!correctUser) {
+				setError('Email ou senha inválidos!')
+				return
+			}
+			
 			setError('')
+			localStorage.setItem("user", JSON.stringify(correctUser))
 			navigate('/noticias')
 		}
 
@@ -31,7 +38,7 @@ function LoginCard({ cardArg = 'login-1' }) {
 	
 				{/*Inputs*/}
 				<div className='space-y-4'>
-						<input type="text" placeholder='Email ou nome de usuário' value={email}
+						<input type="text" placeholder='Email' value={email}
 							onChange={e=>setEmail(e.target.value)}
 							className='bg-white placeholder-ppinktr-500 text-black w-full px-2.5 py-1 rounded-xl 
 							focus:outline-ppink-500'/>

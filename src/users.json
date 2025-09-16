@@ -1,0 +1,42 @@
+  [
+    {
+      "name": "Alice Silva",
+      "email": "alice@example.com",
+      "password": "1234",
+      "userType": "jogadora",
+      "age": 18,
+      "verified": "",
+      "city": "São Paulo",
+      "photo": "https://i.pravatar.cc/300?img=5",
+      "time": "Time Fênix"
+    },
+    {
+      "name": "Bruno Oliveira",
+      "email": "bruno@example.com",
+      "password": "abcd",
+      "userType": "olheiro",
+      "age": 20,
+      "verified": "V",
+      "city": "São Paulo",
+      "photo": "https://i.pravatar.cc/300?img=12"
+    },
+    {
+      "name": "Time Fênix",
+      "email": "fenix@example.com",
+      "password": "time2025",
+      "userType": "time",
+      "verified": "",
+      "city": "São Paulo",
+      "photo": "https://cdn.discordapp.com/attachments/1355170612053672048/1417483749121200269/raw.png?ex=68caa61d&is=68c9549d&hm=94da9f75489671f9e37d030b46b48d2de5718a6112d15bed2e3b99fbbdbaabad&"
+    },
+    {
+      "name": "Carla Souza",
+      "email": "carla@example.com",
+      "password": "report2025",
+      "userType": "jornalista",
+      "age": 30,
+      "verified": "",
+      "city": "São Paulo",
+      "photo": "https://i.pravatar.cc/300?img=20"
+    }
+  ]
