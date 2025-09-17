@@ -11,7 +11,7 @@ const TestMatch = () => {
   const [lat, setLat] = useState('0.000')
   const [long, setLong] = useState('0.000')
   const [error, setError] = useState('')
-  const api = 'oioi'
+  const api = 'localhost:8000'
 
   useEffect(() => {
     const fetchData = async () => {
