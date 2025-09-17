@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import { Link } from 'react-router-dom';
 import NavBar from "../components/PrincipalPages/NavBar"
 import ProfileCard from '../components/PrincipalPages/ProfileCard'
 import NewsCard from "../components/PrincipalPages/NewsCard"
@@ -29,9 +29,9 @@ function News() {
       <NavBar />
 
       {/*Principal*/}
-      <main className="flex gap-20 pt-30 p-14">
+      <main className="flex flex-col md:flex-row gap-4 md:gap-20 pt-30 p-4 md:p-14 md:pt-30">
         {/*Barra lateral da esquerda*/}
-        <aside className="fixed top-30 left-14 w-55">
+        <aside className="w-full md:w-55 md:fixed md:top-25 md:left-14">
 
           {/*Card Perfil*/}
           <ProfileCard />
@@ -58,7 +58,7 @@ function News() {
         </aside>
 
         {/*Feed de notícias*/}
-        <section className="w-full h-full ml-80">
+        <section className="w-full h-full md:ml-80">
           {filteredPosts.map(post =>
             <NewsCard key={post.id} title={post.title} text={post.text} bannerImg={post.postBanner} category={post.category} jornalistId={4} />
           )}
