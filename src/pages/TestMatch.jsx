@@ -10,8 +10,26 @@ const TestMatch = () => {
   const [y, setY] = useState(0)
   const [lat, setLat] = useState('0.000')
   const [long, setLong] = useState('0.000')
+  const [error, setError] = useState('')
+  const api = 'oioi'
 
-  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(api)
+        const data = await response.json()
+
+        setLat(data.latitude)
+        setLong(data.longitude)
+        setX(data.x)
+        setY(data.y)
+      } catch (apiError) {
+        setError(`Erro na API: ${apiError}`)
+      }
+    }
+
+    fetchData();
+  }, [])
 
   return (
     <div id='content' className='w-screen h-screen'>
@@ -33,6 +51,7 @@ const TestMatch = () => {
           <p className='text-lg hover:bg-gray-300'>Latitude: {lat}</p>
           <p className='text-lg mt-3 hover:bg-gray-300'>X: {x}%</p>
           <p className='text-lg hover:bg-gray-300'>Y: {y}%</p>
+          <p className='text-md text-ppink-500 mt-3 hover:bg-gray-300'>{error}</p>
         </div>
         <div className='relative w-1/2'>
           <img src={field} alt="" className='w-full'/>
