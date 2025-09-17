@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import NavBar from '../components/PrincipalPages/NavBar'
 import matches from '../matches.json'
@@ -133,7 +134,7 @@ const Matches = () => {
                      </button>
                   }
                   {displayedMatch ? (
-                     <div key={displayedMatch.id} className="bg-ppurple-500 flex flex-col items-center py-4 m-4 rounded-2xl">
+                     <div key={displayedMatch.id} className="bg-ppurple-200 flex flex-col items-center py-4 m-4 rounded-2xl">
                         <div className='flex items-center gap-2'>
                            <div className="w-35 flex flex-col items-center">
                               <img src={GetTeamById(displayedMatch.team1_id).photo} alt="Logo do Time 1" className='h-20' />
@@ -147,8 +148,8 @@ const Matches = () => {
                               <span className='text-pgrey-500 font-bold'>{GetTeamById(displayedMatch.team2_id).name}</span>
                            </div>
                         </div>
-                        <button className='text-ppink-500 font-bold px-2 py-1 mt-2 border-2 border-ppink-500 rounded-lg
-                        transition-all hover:scale-108'>Assistir</button>
+                        <Link to='/jogos/teste' className='text-pgrey-500 font-bold px-2 py-1 mt-2 border-2 border-pgrey-500 rounded-lg
+                        transition-all hover:scale-108'>Assistir</Link>
                      </div>
                   ) : (
                      <p>Nenhum jogo ao vivo neste momento.</p>
