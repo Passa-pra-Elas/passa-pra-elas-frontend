@@ -4,6 +4,8 @@ import field from '../assets/quadra.png'
 import UserImg from '../components/UserImg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+import axios from 'axios'
+
 
 const TestMatch = () => {
   const [x, setX] = useState(0)
@@ -11,26 +13,48 @@ const TestMatch = () => {
   const [lat, setLat] = useState('0.000')
   const [long, setLong] = useState('0.000')
   const [error, setError] = useState('')
-  const api = 'localhost:8000'
+  const api = '127.0.0.1:8000'
 
   useEffect(() => {
-    const fetchData = async () => {
+    // Função assíncrona para buscar os dados
+    const fetchUser = async () => {
       try {
-        const response = await fetch(api)
-        const data = await response.json()
-
-        setLat(data.latitude)
-        setLong(data.longitude)
-        setX(data.x)
-        setY(data.y)
-      } catch (apiError) {
-        setError(`Erro na API: ${apiError}`)
+        // Faz a requisição GET usando o axios
+        const response = await axios.get('http://127.0.0.1:8000/coord/latlong');
+        setLat(response.data.y)
+        setLong(response.data.x)
+        // O Axios já retorna os dados no objeto 'data'
+      } catch (err) {
+        // Se houver um erro na requisição
+        setError(err)
+      } finally {
+        // Oculta o estado de carregamento, seja com sucesso ou com erro
+        setTimeout(fetchUser, 2000);
       }
-    }
+    };
+    fetchUser()
+  }, []);
 
-    fetchData();
-  }, [])
-
+  useEffect(() => {
+    // Função assíncrona para buscar os dados
+    const fetchUser = async () => {
+      try {
+        // Faz a requisição GET usando o axios
+        const response = await axios.get('http://127.0.0.1:8000/coord/latlong/100');
+        setY(response.data.y)
+        setX(response.data.x)
+        console.log(response.data)
+        // O Axios já retorna os dados no objeto 'data'
+      } catch (err) {
+        // Se houver um erro na requisição
+        setError(err)
+      } finally {
+        // Oculta o estado de carregamento, seja com sucesso ou com erro
+        setTimeout(fetchUser, 2000); 
+      }
+    };
+    fetchUser()
+  }, []);
   return (
     <div id='content' className='w-screen h-screen'>
       {/*Background*/}
