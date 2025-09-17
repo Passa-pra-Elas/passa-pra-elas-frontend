@@ -40,14 +40,14 @@ const HeroSection = () => {
 
         </div>
 
-        {/*Seta para baixo*/}
+        {/*Seta para baixo
         {showArrow && (
           <div className='absolute w-full bottom-8 flex justify-center transition-opacity duration-500'>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10 text-white animate-bounce">
               <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 5.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </div>
-        )}
+        )}*/}
 
       </section>
     </div>
