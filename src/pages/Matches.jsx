@@ -138,14 +138,14 @@ const Matches = () => {
                         <div className='flex items-center gap-2'>
                            <div className="w-35 flex flex-col items-center">
                               <img src={GetTeamById(displayedMatch.team1_id).photo} alt="Logo do Time 1" className='h-20' />
-                              <span className='text-pgrey-500 font-bold'>{GetTeamById(displayedMatch.team1_id).name}</span>
+                              <span className='text-sm sm:text-md text-pgrey-500 font-bold'>{GetTeamById(displayedMatch.team1_id).name}</span>
                            </div>
                            <div className="">
-                              <span className='text-white text-3xl font-extrabold'>{displayedMatch.score1} x {displayedMatch.score2}</span>
+                              <span className='text-white text-md sm:text-3xl font-extrabold'>{displayedMatch.score1} x {displayedMatch.score2}</span>
                            </div>
                            <div className="w-35 flex flex-col items-center">
                               <img src={GetTeamById(displayedMatch.team2_id).photo} alt="Logo do Time 2" className='h-20' />
-                              <span className='text-pgrey-500 font-bold'>{GetTeamById(displayedMatch.team2_id).name}</span>
+                              <span className='text-sm sm:text-md text-pgrey-500 font-bold'>{GetTeamById(displayedMatch.team2_id).name}</span>
                            </div>
                         </div>
                         <Link to='/jogos/teste' className='text-pgrey-500 font-bold px-2 py-1 mt-2 border-2 border-pgrey-500 rounded-lg
@@ -164,12 +164,12 @@ const Matches = () => {
                </div>
             </div>
 
-            <div className='bg-ppurple-200 flex flex-col items-center mx-10 mt-6 rounded-md'>
+            <div className='bg-ppurple-200 flex flex-col items-center sm:mx-10 my-6 py-5 px-4 sm:px-0 rounded-md'>
                <h2 className='text-4xl font-bold my-10'>CALENDÁRIO</h2>
                
-               <div className='w-full flex justify-around'>
+               <div className='w-full flex sm:flex-row flex-col items-center sm:justify-around'>
                   {/*Calendário*/}
-                  <div className='bg-white w-90 m-2 mb-10 rounded-md'>
+                  <div className='bg-white w-70 sm:w-90 m-2 mb-10 rounded-md'>
                      {/*Mês e ano*/}
                      <div className='bg-pgreentr-500 text-xl font-bold flex justify-between px-2 py-3'>
                         <button onClick={GoToPrevMonth}>&lt;</button>
@@ -202,20 +202,20 @@ const Matches = () => {
                      {selectedDayMatches.length > 0 ? (
                         <div className='space-y-4'>
                            {selectedDayMatches.map(match => (
-                              <div key={match.id} className='bg-white w-90 flex flex-col items-center p-4 rounded-xl'>
+                              <div key={match.id} className='bg-white w-70 sm:w-90 flex flex-col items-center p-4 rounded-xl'>
                                  <div className='flex items-center justify-between gap-5'>
-                                    <div className='flex flex-col items-center space-x-2 w-30'>
+                                    <div className='flex flex-col items-center space-x-2 w-20 sm:w-30'>
                                        <img src={GetTeamById(match.team1_id).photo} alt="Logo do time 1" className='w-8 h-8'/>
-                                       <span className='font-semibold text-ppurple-500'>{GetTeamById(match.team1_id).name}</span>
+                                       <span className='text-sm sm:text-md text-center font-semibold text-ppurple-500'>{GetTeamById(match.team1_id).name}</span>
                                     </div>
-                                    <div className='text-xl font-bold text-ppurple-500'>
+                                    <div className='text-md sm:text-xl font-bold text-ppurple-500'>
                                        <span>
                                           {new Date(match.date) < GetBrasiliaTime() ? `${match.score1} x ${match.score2}` : '? x ?'}
                                        </span>
                                     </div>
-                                    <div className='flex flex-col items-center space-x-2 w-30'>
+                                    <div className='flex flex-col items-center space-x-2 w-20 sm:w-30'>
                                        <img src={GetTeamById(match.team2_id).photo} alt="Logo do time 1" className='w-8 h-8'/>
-                                       <span className='font-semibold text-ppurple-500'>{GetTeamById(match.team2_id).name}</span>
+                                       <span className='text-sm sm:text-md text-center font-semibold text-ppurple-500'>{GetTeamById(match.team2_id).name}</span>
                                     </div>
                                  </div>
                                  <button className='text-ppink-500 font-bold px-2 py-1 mt-2 border-2 border-ppink-500 rounded-lg
