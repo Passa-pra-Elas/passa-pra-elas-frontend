@@ -3,12 +3,12 @@ import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'
 import './index.css'
 import users from '../src/users.json'
 
-import LandingPage from './pages/LandingPage'
-import Login from './pages/Login'
-import Register from './pages/Register'
-import News from './pages/News'
-import Matches from './pages/Matches'
-import TestMatch from './pages/TestMatch'
+import LandingPage from './routes/LandingPage'
+import Login from './routes/Login'
+import Register from './routes/Register'
+import News from './routes/News'
+import Matches from './routes/Matches'
+import TestMatch from './routes/TestMatch'
 
 function App() {
   const [user, setUser] = useState(null)

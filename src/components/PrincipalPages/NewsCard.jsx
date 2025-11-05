@@ -10,7 +10,7 @@ function NewsCard ({ title, text, bannerImg, category, jornalistId }) {
    }, [])   
 
    return (
-      <div className='bg-white w-full flex-col px-4 py-2 mt-4 border-1 rounded-2xl'>
+      <div className='bg-white w-full flex-col px-4 py-2 mt-4 border rounded-2xl'>
          {/*Textos em cima*/}
          <div className='flex flex-col sm:items-center justify-between sm:flex-row'>
             <p className='text-lg'>{title}</p>
@@ -31,7 +31,7 @@ function NewsCard ({ title, text, bannerImg, category, jornalistId }) {
                <p className='line-clamp-5'>{text}</p>
                <div className='flex mt-4 md:mt-0 justify-between items-center'>
                   <p className='text-ppurple-500'>Há 1 hora - Em {category}</p>
-                  <button className='text-ppink-500 border-1 px-2 border-ppink-500 rounded-md
+                  <button className='text-ppink-500 border px-2 border-ppink-500 rounded-md
                   cursor-pointer transition-all hover:font-semibold hover:scale-105'>
                      Ler mais
                   </button>
