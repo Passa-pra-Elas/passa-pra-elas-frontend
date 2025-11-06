@@ -1,12 +1,11 @@
 import React, { useState, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { API_URL } from '../../config/apiConfig'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons'
 import { ArrowTurnUpLeftIcon, CheckCircleIcon } from '@heroicons/react/24/outline'
-
-const API_URL = 'http://localhost:5001'
 
 function RegisterCard({ cardArg = 'cadastro-1' }) {
    const [card, setCard] = useState(cardArg)

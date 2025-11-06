@@ -1,37 +1,58 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import useAuth from '../hooks/authHooks';
+import UserImg from './UserImg';
+import axios from 'axios';
+import { API_URL } from '../config/apiConfig';
 
-import users from '../users.json'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
-import UserImg from './UserImg'
 
 const UserTeam = ({ size = 3 }) => {
-   const [user, setUser] = useState(null)
+   const { user, loading } = useAuth();
    const [userTeam, setUserTeam] = useState(null)
+   const [teamLoading, setTeamLoading] = useState(null)
 
    useEffect(() => {
-      const loggedInUser = localStorage.getItem('user')
-      if (loggedInUser) {
-        setUser(JSON.parse(loggedInUser)) 
+      if (user && user.teamId) {
+         const fetchUserTeam = async () => {
+            setTeamLoading(true)
+            try {
+               const response = axios.get(`${API_URL}/teams/${user.teamId}`, {
+                  headers: {
+                     Authorization: `Bearer ${localStorage.getItem('token')}`
+                  }
+               })
+
+               setUserTeam(response.data.team)
+            }
+            catch (error) {
+               console.error('Erro ao buscar time do usuário:', error)
+               setUserTeam(null)
+            }
+            finally {
+               setTeamLoading(false)
+            }
+         }
+         fetchUserTeam()
       }
+      else if (!user && !loading) {
+         setUserTeam(null)
+      }
+   }, [user, loading])
 
-      setUserTeam(users.find(u => u.userType === 'time'))
-      console.log(users.find(u => u.userType === 'time'))
-   }, [])
 
-   if (user) {
+   if (user && userTeam) {
       return (
          <Link to={'/time'} className='flex items-center'>
-            <img src={userTeam.photo} alt="team image" 
-            style={{ height: `${size}rem`, width: `${size}rem` }} 
-            className={`rounded-full`}/>
+            <img src={userTeam.photo} alt={`${userTeam.name} image`}
+               style={{ height: `${size}rem`, width: `${size}rem` }}
+               className={`rounded-full object-cover`} />
             <p>{userTeam.name}</p>
          </Link>
-      )  
+      )
    }
-
-   return
+   return null
 }
 
 export default UserTeam

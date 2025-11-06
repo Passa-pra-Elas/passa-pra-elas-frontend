@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 import NavBar from '../components/PrincipalPages/NavBar'
 import matches from '../matches.json'
-import users from '../users.json'
 
 const Matches = () => {
    const [teams, setTeams] = useState(null)
@@ -114,7 +113,7 @@ const Matches = () => {
             <div className="absolute inset-0 
             bg-linear-to-t from-pgreen-500 to-pgreentr-500"></div>
             <div className='absolute inset-0 
-            bg-[radial-gradient(ellipse_at_top,_#ffffff4d_.1px,transparent_1px)] bg-[size:14px_14px]'></div>
+            bg-[radial-gradient(ellipse_at_top, #ffffff4d_.1px,transparent_1px)] bg-size-[14px_14px]'></div>
          </div>
 
          {/*Navegação*/}
@@ -128,7 +127,7 @@ const Matches = () => {
                <div className='w-full flex justify-center'>
                   {liveMatches.length > 1 &&
                      <button onClick={prevMatch}
-                        className='bg-ppinktr-500 text-2xl font-bold px-3 py-1 my-auto border-1 border-black rounded-full
+                        className='bg-ppinktr-500 text-2xl font-bold px-3 py-1 my-auto border border-black rounded-full
                         transition-all hover:scale-105 hover:bg-ppink-500'>
                         &lt;
                      </button>
@@ -156,7 +155,7 @@ const Matches = () => {
                   )}
                   {liveMatches.length > 1 &&
                      <button onClick={prevMatch}
-                        className='bg-ppinktr-500 text-2xl font-bold px-3 py-1 my-auto border-1 border-black rounded-full
+                        className='bg-ppinktr-500 text-2xl font-bold px-3 py-1 my-auto border border-black rounded-full
                         transition-all hover:scale-105 hover:bg-ppink-500'>
                         &gt;
                      </button>

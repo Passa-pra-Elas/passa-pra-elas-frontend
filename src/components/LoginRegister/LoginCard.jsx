@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { API_URL } from '../../config/apiConfig'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons'
@@ -12,8 +13,6 @@ function LoginCard({ cardArg = 'login-1' }) {
 	const [error, setError] = useState('')
 	const [card, setCard] = useState(cardArg)
 	const navigate = useNavigate()
-
-	const API_URL = 'http://localhost:5001'
 
 	function HandleSubmit(params, nextCard) {
 		if (params.includes(userName) && params.includes(password)) {
