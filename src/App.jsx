@@ -10,6 +10,8 @@ import Login from './routes/Login'
 import Register from './routes/Register'
 import Profile from './routes/Profile'
 
+import SearchResults from './routes/SearchResults'
+
 import News from './routes/News'
 import CreatePost from './routes/CreatePost'
 import PostDetail from './routes/PostDetail'
@@ -27,6 +29,8 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/cadastro' element={<Register />} />
           <Route path='/perfil/:id' element={<Profile/>}/>
+
+          <Route path='/search' element={<SearchResults/>} />
 
           <Route path='/noticias' element={<News/>} />
           <Route path='/noticias/create' element={<CreatePost/>} />

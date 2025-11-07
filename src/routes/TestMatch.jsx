@@ -62,7 +62,7 @@ const TestMatch = () => {
         <div className="absolute inset-0 
             bg-linear-to-t from-ppink-500 to-ppinktr-500"></div>
         <div className='absolute inset-0 
-            bg-[radial-gradient(ellipse_at_top,_#ffffff4d_.1px,transparent_1px)] bg-[size:14px_14px]'></div>
+            bg-[radial-gradient(ellipse_at_top, #ffffff4d_.1px,transparent_1px)] bg-size-[14px_14px]'></div>
       </div>
 
       <NavBar/>

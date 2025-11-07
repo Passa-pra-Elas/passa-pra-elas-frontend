@@ -2,12 +2,14 @@ import React, { useState, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { API_URL } from '../../config/apiConfig'
+import useAuth from '../../hooks/authHooks'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons'
 import { ArrowTurnUpLeftIcon, CheckCircleIcon } from '@heroicons/react/24/outline'
 
 function LoginCard({ cardArg = 'login-1' }) {
+   const { login } = useAuth()
 	const [userName, setuserName] = useState('')
 	const [password, setPassword] = useState('')
 	const [error, setError] = useState('')
@@ -39,7 +41,7 @@ function LoginCard({ cardArg = 'login-1' }) {
 			const token = response.data.token
 
 			if (token) {
-				localStorage.setItem('token', token)
+				login(token)
 				setError('Login realizado com sucesso!')
 				setTimeout(() => navigate('/noticias'), 1000)
 			}
@@ -86,7 +88,7 @@ function LoginCard({ cardArg = 'login-1' }) {
 						</label>
 					</div>
 					<div className='bg-white w-full flex items-center rounded-xl shadow-md'>
-						<input type="text" placeholder='' value={password}
+						<input type="password" placeholder='' value={password}
 							onChange={e => setPassword(e.target.value)}
 							className='peer text-black w-full px-2.5 py-1 rounded-xl z-1
 							focus:outline-none'/>

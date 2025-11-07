@@ -36,7 +36,7 @@ const CreatePost = () => {
       setError('');
 
       if (!title || !text || !category) {
-         setError('Todos os campos obrigatórios (Título, Texto, Categoria) devem ser preenchidos.');
+         setError('Todos os campos obrigatórios devem ser preenchidos!');
          setIsSubmitting(false);
          return;
       }
@@ -45,21 +45,23 @@ const CreatePost = () => {
          const token = localStorage.getItem('token');
          const newPost = { title, text, bannerImg, category };
 
-         await axios.post(`${API_URL}/posts`, newPost, {
+         const response = await axios.post(`${API_URL}/posts`, newPost, {
             headers: {
                Authorization: `Bearer ${token}`
             }
          });
+         //${response.data.post.id}
+         navigate(`/noticias/`)
 
-         navigate('/noticias');
-
-      } catch (error) {
-         console.error("Erro ao criar post:", error.response || error);
-         setError(error.response?.data?.message || 'Erro ao criar postagem. Tente novamente.');
-      } finally {
-         setIsSubmitting(false);
+      } 
+      catch (error) {
+         console.error("Erro ao criar post:", error.response || error)
+         setError(error.response?.data?.message || 'Erro ao criar postagem. Tente novamente.')
+      } 
+      finally {
+         setIsSubmitting(false)
       }
-   };
+   }
 
    return (
       <div className='relative min-h-screen'>

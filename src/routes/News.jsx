@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useCallback } from "react"
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from "react";
 import axios from 'axios'
@@ -19,10 +19,17 @@ function News() {
   const [postFilter, setPostFilter] = useState('all')
   const [allPosts, setAllPosts] = useState([])
   const [loadingPosts, setLoadingPosts] = useState(true)
+  const [hasFetched, setHasFetched] = useState(false)
 
-  const isJornalist = user && user.userType === 'jornalista';
+  const isJornalist = user && user.userType === 'jornalista'
+  const authToken = localStorage.getItem('token')
+
 
   useEffect(() => {
+    if (authLoading) {
+      return
+    }
+
     const fetchPosts = async () => {
       setLoadingPosts(true)
       try {
@@ -30,15 +37,20 @@ function News() {
         setAllPosts(response.data.posts.reverse() || [])
       }
       catch (error) {
-        console.error('Erro ao buscar posts: ', error)
+        console.error('Erro ao buscar posts: ', error.message, error.code)
         setAllPosts([])
       }
       finally {
         setLoadingPosts(false)
       }
     }
-    fetchPosts()
-  }, [])
+
+    /*Timer para dar tempo da página carregar antes das requisições */
+    const timer = setTimeout(() => {
+      fetchPosts()
+    }, 300)
+    return () => clearTimeout(timer)
+  }, [authLoading])
 
   const filteredPosts = allPosts.filter(post => {
     if (postFilter === 'all') {
@@ -47,7 +59,7 @@ function News() {
     return post.category === postFilter
   })
 
-  if (loadingPosts || authLoading) {
+  if (loadingPosts) {
     return (
       <div className="flex items-center justify-center min-h-screen text-ppurple-500 font-bold">
         Carregando Feed...
@@ -104,7 +116,7 @@ function News() {
               <button
                 onClick={() => navigate('/noticias/create')}
                 className="bg-ppink-500 text-lg px-4 py-1 border rounded-lg transition-all hover:scale-105 cursor-pointer">
-                <FontAwesomeIcon icon={faPlus} className='w-4 h-4'/>
+                <FontAwesomeIcon icon={faPlus} className='w-4 h-4' />
                 Nova publicação
               </button>
             </div>
@@ -121,7 +133,8 @@ function News() {
                   jornalistId={post.authorId}
                   createdAt={post.createdAt}
                   views={post.views}
-                  postId={post.id} />
+                  postId={post.id}
+                  authToken={authToken} />
               )
             ) : (
               <p className="text-white font-semibold mt-8">Nenhuma notícia encontrada para esta categoria.</p>

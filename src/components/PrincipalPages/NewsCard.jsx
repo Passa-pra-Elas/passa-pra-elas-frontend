@@ -45,7 +45,7 @@ const timeAgo = (dateString) => {
    return `há ${years} ano${years > 1 ? 's' : ''}`;
 };
 
-function NewsCard({ title, text, bannerImg, category, jornalistId, createdAt, views, postId }) {
+function NewsCard({ title, text, bannerImg, category, jornalistId, createdAt, views, postId, authToken }) {
    const [jornalist, setJornalist] = useState('')
    const [loading, setLoading] = useState(true)
    const timeSincePost = timeAgo(createdAt)
@@ -60,13 +60,7 @@ function NewsCard({ title, text, bannerImg, category, jornalistId, createdAt, vi
 
       const fetchJornalist = async () => {
          try {
-            const token = localStorage.getItem('token')
-            const response = await axios.get(`${API_URL}/profile/${jornalistId}`, {
-               headers: {
-                  Authorization: `Bearer ${token}`
-               }
-            })
-
+            const response = await axios.get(`${API_URL}/profile/${jornalistId}`)
             setJornalist(response.data.publicUser)
          }
          catch (error) {

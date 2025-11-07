@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import useAuth from '../../hooks/authHooks'
 
 import logo from '../../assets/logo_PPE.png'
@@ -9,13 +9,27 @@ import { faFutbol, faNewspaper, faSearch, faUser, faSignOutAlt } from '@fortawes
 
 function NavBar() {
    const location = useLocation()
+   const navigate = useNavigate()
    const { user, logout } = useAuth()
 
    const [isMenuOpen, setIsMenuOpen] = useState(false)
+   const [searchTerm, setSearchTerm] = useState('')
 
    const handleLogout = () => {
       logout()
       setIsMenuOpen(false)
+   }
+
+   const handleSearch = (e) => {
+      if (searchTerm.trim()) {
+         navigate(`/search?q=${encodeURIComponent(searchTerm.trim())}`)
+      }
+   }
+
+   const handleKeyDown = (e) => {
+      if (e.key == 'Enter') {
+         handleSearch()
+      }
    }
 
    return (
@@ -31,8 +45,16 @@ function NavBar() {
 
             {/*Barra de pesquisa*/}
             <div className='flex items-center bg-white text-lg px-2 py-1 rounded w-full md:w-auto'>
-               <FontAwesomeIcon icon={faSearch} className='text-ppink-500 pr-1 cursor-pointer' />
-               <input type="text" placeholder='Pesquisar' className='w-full md:w-[30vw] text-ppink-500 outline-none' />
+               <button onClick={handleSearch} className='p-0 bg-transparent border-none'>
+                  <FontAwesomeIcon icon={faSearch} className='text-ppink-500 pr-1 cursor-pointer' />
+               </button>
+               <input
+                  type="text"
+                  placeholder='Pesquisar'
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  className='w-full md:w-[30vw] text-ppink-500 outline-none' />
             </div>
          </div>
 
