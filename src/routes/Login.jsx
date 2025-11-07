@@ -16,7 +16,7 @@ const Login = () => {
         </div>
 
         <div className='h-screen w-screen flex flex-col items-center justify-center gap-7'>
-            <Link to='/'><img src={logo} alt="logo passa a bola" className='h-20'/></Link>
+            <Link to='/'><img src={logo} alt="log o passa a bola" className='h-20'/></Link>
             <LoginCard/>
         </div>
     </div>
