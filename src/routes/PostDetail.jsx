@@ -27,7 +27,7 @@ const PostDetail = () => {
             setPost(fetchedPost)
 
             if (fetchedPost.authorId) {
-               const authorResponse = await axios.get(`${API_URL}/users/${fetchedPost.authorId}`)
+               const authorResponse = await axios.get(`${API_URL}/profile/${fetchedPost.authorId}`)
                setJornalist(authorResponse.data.publicUser)
             }
          }

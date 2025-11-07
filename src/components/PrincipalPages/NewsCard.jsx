@@ -61,7 +61,7 @@ function NewsCard({ title, text, bannerImg, category, jornalistId, createdAt, vi
       const fetchJornalist = async () => {
          try {
             const token = localStorage.getItem('token')
-            const response = await axios.get(`${API_URL}/users/${jornalistId}`, {
+            const response = await axios.get(`${API_URL}/profile/${jornalistId}`, {
                headers: {
                   Authorization: `Bearer ${token}`
                }
@@ -92,14 +92,12 @@ function NewsCard({ title, text, bannerImg, category, jornalistId, createdAt, vi
          {/*Textos em cima*/}
          <div className='flex flex-col sm:items-center justify-between sm:flex-row'>
             <p className='text-lg'>{title}</p>
-            <div className='flex items-center'>
+            <Link to={`../perfil/${jornalist.id}`} className='flex items-center'>
                <p className='text-ppurple-500 text-lg font-semibold mr-2'>{jornalist.fullName}</p>
-               <button onClick={() => console.log(aresponse)}>
-                  <img src={jornalist.photo} alt="user image"
-                     style={{ height: '2rem', width: '2rem' }}
-                     className={`rounded-full`} />
-               </button>
-            </div>
+               <img src={jornalist.photo} alt="user image"
+                  style={{ height: '2rem', width: '2rem' }}
+                  className={`rounded-full`} />
+            </Link>
          </div>
          {/*elementos notícias*/}
          <div className='flex flex-col gap-2 md:gap-10 md:flex-row'>

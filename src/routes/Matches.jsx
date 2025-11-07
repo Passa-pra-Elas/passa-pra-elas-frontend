@@ -1,18 +1,43 @@
-import { React, useState, useEffect } from 'react'
+import { React, useState, useEffect, useCallback } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios' // Importado axios
+import { API_URL } from '../config/apiConfig'
 
 import NavBar from '../components/PrincipalPages/NavBar'
-import matches from '../matches.json'
 
 const Matches = () => {
-   const [teams, setTeams] = useState(null)
+   const [loading, setLoading] = useState(true)
+   const [teams, setTeams] = useState([])
+   const [allMatches, setAllMatches] = useState([])
+
    const [currentDate, setCurrentDate] = useState(new Date())
    const [liveMatches, setLiveMatches] = useState([])
    const [selectedDayMatches, setSelectedDayMatches] = useState([])
    const [currentLiveIndex, setCurrentLiveIndex] = useState(0)
 
+   const GetTeamById = useCallback((id) => {
+      const team = teams.find(team => team.id === id)
+      return team || { name: 'Time Desconhecido', photo: 'placeholder-url' }
+   }, [teams])
+
    useEffect(() => {
-      setTeams(users.find(u => u.userType === 'time'))
+      const fetchAllData = async () => {
+         setLoading(true)
+         try {
+            const teamsResponse = await axios.get(`${API_URL}/teams`)
+            setTeams(teamsResponse.data.teams || [])
+
+            const matchesResponse = await axios.get(`${API_URL}/matches`)
+            setAllMatches(matchesResponse.data.matches || [])
+
+         } catch (error) {
+            console.error('Erro ao carregar dados:', error)
+         } finally {
+            setLoading(false)
+         }
+      };
+
+      fetchAllData();
    }, [])
 
    const GetBrasiliaTime = () => {
@@ -22,40 +47,36 @@ const Matches = () => {
       return new Date(utc + (3600000 * offsetBrasilia))
    }
 
-   const GetTeamById = (id) => {
-      return users.find(team => team.id === id)
-   }
+   const FilterLiveMatches = useCallback(() => {
+      const now = GetBrasiliaTime();
+      const live = allMatches.filter(match => {
+         const matchStart = new Date(match.date);
+         const matchEnd = new Date(matchStart.getTime() + match.duration * 60000);
+         return now >= matchStart && now < matchEnd;
+      });
+      setLiveMatches(live);
+      setCurrentLiveIndex(0);
+   }, [allMatches])
 
-   const FilterLiveMatches = () => {
-      const now = new Date()
-      const live = matches.filter(match => {
-         const matchStart = new Date(match.date)
-         const matchEnd = new Date(matchStart.getTime() + match.duration * 60000)
-         return now >= matchStart && now < matchEnd
+   const FilterMatchesByDay = useCallback((date) => {
+      const filtered = allMatches.filter(match => {
+         const matchDate = new Date(match.date)
+         return matchDate.getFullYear() === date.getFullYear() &&
+            matchDate.getMonth() === date.getMonth() &&
+            matchDate.getDate() === date.getDate()
       })
-      setLiveMatches(live)
-      setCurrentLiveIndex(0)
-   }
-
-   const FilterMatchesByDay = (date) => {
-      const filtered = matches.filter(match => {
-         const filtered = matches.filter(match => {
-            const matchDate = new Date(match.date)
-            return matchDate.getFullYear() === date.getFullYear() &&
-               matchDate.getMonth() === date.getMonth() &&
-               matchDate.getDate() === date.getDate()
-         })
-         setSelectedDayMatches(filtered)
-      })
-   }
+      setSelectedDayMatches(filtered)
+   }, [allMatches])
 
    useEffect(() => {
-      FilterLiveMatches()
-      FilterMatchesByDay(currentDate)
+      if (allMatches.length > 0) {
+         FilterLiveMatches()
+         FilterMatchesByDay(currentDate)
+      }
 
       const interval = setInterval(FilterLiveMatches, 60000)
       return () => clearInterval(interval)
-   }, [currentDate])
+   }, [currentDate, allMatches, FilterLiveMatches, FilterMatchesByDay])
 
    const nextMatch = () => {
       if (liveMatches.length > 0) {
@@ -69,9 +90,9 @@ const Matches = () => {
       }
    }
 
-   const daysInMonth = (date) => new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-   const firstDayOfMonth = (date) => new Date(date.getFullYear(), date.getMonth(), 1).getDay();
-   const daysOfWeek = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
+   const daysInMonth = (date) => new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate()
+   const firstDayOfMonth = (date) => new Date(date.getFullYear(), date.getMonth(), 1).getDay()
+   const daysOfWeek = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S']
 
    const GetCalendarDays = () => {
       const totalDays = daysInMonth(currentDate);
@@ -85,26 +106,34 @@ const Matches = () => {
          days.push({ day: i, isCurrentMonth: true });
       }
       return days;
-   };
+   }
 
-   const calendarDays = GetCalendarDays();
-   const monthName = currentDate.toLocaleString('pt-BR', { month: 'long' }).toUpperCase();
+   const calendarDays = GetCalendarDays()
+   const monthName = currentDate.toLocaleString('pt-BR', { month: 'long' }).toUpperCase()
+   const displayedMatch = liveMatches.length > 0 ? liveMatches[currentLiveIndex] : null;
 
    const GoToPrevMonth = () => {
       setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1));
-   };
+   }
    const GoToNextMonth = () => {
       setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1));
-   };
+   }
 
    const SelectDay = (day) => {
       if (day.isCurrentMonth) {
-         setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), day.day));
-         filterMatchesByDay(new Date(currentDate.getFullYear(), currentDate.getMonth(), day.day));
+         const newDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day.day);
+         setCurrentDate(newDate)
+         FilterMatchesByDay(newDate);
       }
-   };
+   }
 
-   const displayedMatch = liveMatches.length > 0 ? liveMatches[currentLiveIndex] : null;
+   if (loading) {
+      return (
+         <div className="flex items-center justify-center min-h-screen text-ppurple-500 font-bold">
+            Carregando Jogos e Times...
+         </div>
+      )
+   }
 
    return (
       <div id='container' className='relative h-full pb-10'>
@@ -165,7 +194,7 @@ const Matches = () => {
 
             <div className='bg-ppurple-200 flex flex-col items-center sm:mx-10 my-6 py-5 px-4 sm:px-0 rounded-md'>
                <h2 className='text-4xl font-bold my-10'>CALENDÁRIO</h2>
-               
+
                <div className='w-full flex sm:flex-row flex-col items-center sm:justify-around'>
                   {/*Calendário*/}
                   <div className='bg-white w-70 sm:w-90 m-2 mb-10 rounded-md'>
@@ -179,18 +208,18 @@ const Matches = () => {
                      {/*Dias da semana*/}
                      <div className='bg-ppink-500 text-white text-lg text-center font-bold grid grid-cols-7 gap-y-2 py-2'>
                         {daysOfWeek.map((day, index) => (
-                           <span key={index}>{day}</span>  
+                           <span key={index}>{day}</span>
                         ))}
                      </div>
-                     
+
                      {/*Dias*/}
                      <div className='grid grid-cols-7 text-sm text-center gap-y-2'>
                         {calendarDays.map((day, index) => (
-                           <span key={index} onClick={() => SelectDay(day)} 
-                           className={`p-1 m-[0.2px] text-lg rounded-md cursor-pointer transition-all 
+                           <span key={index} onClick={() => SelectDay(day)}
+                              className={`p-1 m-[0.2px] text-lg rounded-md cursor-pointer transition-all 
                               ${day.isCurrentMonth ? 'text-black font-semibold hover:bg-ppinktr-500' : 'text-gray-50'} 
                               ${day.day === currentDate.getDate() ? 'bg-ppurple-500 text-white font-bold' : ''}`}>
-                                 {day.day}
+                              {day.day}
                            </span>
                         ))}
                      </div>
@@ -204,7 +233,7 @@ const Matches = () => {
                               <div key={match.id} className='bg-white w-70 sm:w-90 flex flex-col items-center p-4 rounded-xl'>
                                  <div className='flex items-center justify-between gap-5'>
                                     <div className='flex flex-col items-center space-x-2 w-20 sm:w-30'>
-                                       <img src={GetTeamById(match.team1_id).photo} alt="Logo do time 1" className='w-8 h-8'/>
+                                       <img src={GetTeamById(match.team1_id).photo} alt="Logo do time 1" className='w-8 h-8' />
                                        <span className='text-sm sm:text-md text-center font-semibold text-ppurple-500'>{GetTeamById(match.team1_id).name}</span>
                                     </div>
                                     <div className='text-md sm:text-xl font-bold text-ppurple-500'>
@@ -213,7 +242,7 @@ const Matches = () => {
                                        </span>
                                     </div>
                                     <div className='flex flex-col items-center space-x-2 w-20 sm:w-30'>
-                                       <img src={GetTeamById(match.team2_id).photo} alt="Logo do time 1" className='w-8 h-8'/>
+                                       <img src={GetTeamById(match.team2_id).photo} alt="Logo do time 1" className='w-8 h-8' />
                                        <span className='text-sm sm:text-md text-center font-semibold text-ppurple-500'>{GetTeamById(match.team2_id).name}</span>
                                     </div>
                                  </div>

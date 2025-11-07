@@ -8,6 +8,7 @@ import LandingPage from './routes/LandingPage'
 
 import Login from './routes/Login'
 import Register from './routes/Register'
+import Profile from './routes/Profile'
 
 import News from './routes/News'
 import CreatePost from './routes/CreatePost'
@@ -25,6 +26,7 @@ function App() {
 
           <Route path='/login' element={<Login />} />
           <Route path='/cadastro' element={<Register />} />
+          <Route path='/perfil/:id' element={<Profile/>}/>
 
           <Route path='/noticias' element={<News/>} />
           <Route path='/noticias/create' element={<CreatePost/>} />
@@ -32,7 +34,6 @@ function App() {
 
           <Route path='/jogos' element={<Matches />} />
           <Route path='/jogos/teste' element={<TestMatch />} />
-          {/*<Route path='/perfil/:nome' element={<h1>Perfil</h1>}/>*/}
 
           <Route path='*' element={<h1>Erro 404</h1>} />
         </Routes>
