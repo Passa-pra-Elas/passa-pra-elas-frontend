@@ -8,6 +8,8 @@ import LandingPage from './routes/LandingPage'
 
 import Login from './routes/Login'
 import Register from './routes/Register'
+import TermsOfUse from './routes/TermsOfUse'
+import PrivacyPolitic from './routes/PrivacyPolitic'
 import Profile from './routes/Profile'
 
 import SearchResults from './routes/SearchResults'
@@ -28,13 +30,15 @@ function App() {
 
           <Route path='/login' element={<Login />} />
           <Route path='/cadastro' element={<Register />} />
-          <Route path='/perfil/:id' element={<Profile/>}/>
+          <Route path='/termos' element={<TermsOfUse />} />
+          <Route path='/privacidade' element={<PrivacyPolitic />} />
+          <Route path='/perfil/:id' element={<Profile />} />
 
-          <Route path='/search' element={<SearchResults/>} />
+          <Route path='/search' element={<SearchResults />} />
 
-          <Route path='/noticias' element={<News/>} />
-          <Route path='/noticias/create' element={<CreatePost/>} />
-          <Route path='/noticias/:id' element={<PostDetail/>} />
+          <Route path='/noticias' element={<News />} />
+          <Route path='/noticias/create' element={<CreatePost />} />
+          <Route path='/noticias/:id' element={<PostDetail />} />
 
           <Route path='/jogos' element={<Matches />} />
           <Route path='/jogos/teste' element={<TestMatch />} />

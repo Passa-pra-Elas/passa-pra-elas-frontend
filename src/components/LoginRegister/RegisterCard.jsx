@@ -180,14 +180,14 @@ function RegisterCard({ cardArg = 'cadastro-1' }) {
             {/*Texto informátivo*/}
             <p className='text-ppink-500 w-full text-left text-sm mt-1'>{error}</p>
 
-            {/*Outros meios de login*/}
+            {/*Outros meios de login
             <div className='w-full flex flex-col items-center mt-3 pt-2 border-t-[1.5px] border-white'>
                <p>Ou cadastre-se usando:</p>
                <div className='flex gap-5 mt-1'>
                   <FontAwesomeIcon icon={faGoogle} className='text-ppink-500 scale-150 cursor-pointer' />
                   <FontAwesomeIcon icon={faFacebook} className='text-ppink-500 scale-150 cursor-pointer' />
                </div>
-            </div>
+            </div>*/}
 
             {/*Botão ir para cadastro*/}
             <div className='text-center mt-3'>
@@ -245,7 +245,7 @@ function RegisterCard({ cardArg = 'cadastro-1' }) {
                   onChange={(e) => setIsTermAccepted(e.target.checked)}
                />
                <span className='text-xs'>
-                  Li e aceito os <Link to='/termos' className='text-ppink-500'>termos de uso</Link> e <Link to='/termos' className='text-ppink-500'>termos de privacidade</Link>.
+                  Li e aceito os <a href='/termos' target='_blank' className='text-ppink-500'>termos de uso</a> e <a href='/privacidade' target='_blank' className='text-ppink-500'>termos de privacidade</a>.
                </span>
             </label>
 
@@ -270,10 +270,10 @@ function RegisterCard({ cardArg = 'cadastro-1' }) {
 
             {/*Botão ir para cadastro*/}
             <div className='text-center mt-5'>
-               <p className='text-sm'>Não tem uma conta?</p>
-               <Link to='/cadastro'
+               <p className='text-sm'>Já tem uma conta?</p>
+               <Link to='/login'
                   className='text-ppink-500
-               transition-all hover:scale-105 hover:font-bold'>Cadastrar-se</Link>
+               transition-all hover:scale-105 hover:font-bold'>Login</Link>
             </div>
          </div>
       )
@@ -344,7 +344,7 @@ function RegisterCard({ cardArg = 'cadastro-1' }) {
                   onClick={() => HandleSubmit([userType], nextCard)}
                   className='w-full bg-ppurple-500 text-3xl font-extrabold mt-4 p-1 rounded-xl cursor-pointer
                   transition-all hover:bg-ppurple-900 hover:text-pgrey-500 hover:scale-102'>
-                  ENTRAR
+                  AVANÇAR
                </button>
             </div>
 

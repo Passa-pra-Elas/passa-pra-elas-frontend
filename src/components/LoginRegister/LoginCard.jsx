@@ -102,7 +102,7 @@ function LoginCard({ cardArg = 'login-1' }) {
 					</div>
 				</div>
 
-				{/*Botões adicionais*/}
+				{/*Botões adicionais
 				<div className='w-full flex justify-between items-center mt-4'>
 					<label className='flex items-center space-x-2 cursor-pointer'>
 						<input type="checkbox" className='form-checkbox border-none scale-130 cursor-pointer' />
@@ -113,7 +113,7 @@ function LoginCard({ cardArg = 'login-1' }) {
 						className='text-ppink-500 text-sm cursor-pointer
 							transition-all hover:font-medium hover:scale-102'>Esqueceu sua senha?
 					</button>
-				</div>
+				</div>*/}
 
 				{/*Botão entrar*/}
 				<button
@@ -126,14 +126,14 @@ function LoginCard({ cardArg = 'login-1' }) {
 				{/*Texto informátivo*/}
 				<p className='text-ppink-500 w-full text-left text-sm mt-1'>{error}</p>
 
-				{/*Outros meios de login*/}
+				{/*Outros meios de login
 				<div className='w-full flex flex-col items-center mt-6 mb-4 pt-2 border-t-[1.5px] border-white'>
 					<p>Ou entre usando:</p>
 					<div className='flex gap-5 mt-3'>
 						<FontAwesomeIcon icon={faGoogle} className='text-ppink-500 scale-150 cursor-pointer' />
 						<FontAwesomeIcon icon={faFacebook} className='text-ppink-500 scale-150 cursor-pointer' />
 					</div>
-				</div>
+				</div>*/}
 
 				{/*Botão ir para cadastro*/}
 				<div className='text-center mt-5'>
