@@ -58,6 +58,8 @@ Página de Jogos: O site exibe um carrossel de jogos "Ao Vivo Agora" e um calend
 
 # 📦 Instalação
 
+Link do repositório: https://github.com/Passa-pra-Elas/passa-pra-elas-frontend
+
 Clone este repositório e, dentro da pasta do projeto, instale as dependências:
 
 npm install @fortawesome/free-brands-svg-icons @fortawesome/free-regular-svg-icons @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome @heroicons/react @tailwindcss/vite axios react react-dom react-router-dom tailwindcss
